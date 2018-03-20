@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6FE97754-A875-4AED-8E74-F09AFE750C9E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Common.Extensions</RootNamespace>
+    <AssemblyName>Common.Extensions</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Common.Extensions.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EasyCommon.cs" />
+    <Compile Include="EasyBaiduSpeech.cs" />
+    <Compile Include="EasyCaptcha.cs" />
+    <Compile Include="EasyIp.cs" />
+    <Compile Include="EasySession.cs" />
+    <Compile Include="EasyWechatPay.cs" />
+    <Compile Include="EasyWechatProgram.cs" />
+    <Compile Include="EasyWindowsSpeech.cs" />
+    <Compile Include="Models\FileType.cs" />
+    <Compile Include="Models\LocationForIp.cs" />
+    <Compile Include="Models\WechatPay\Oauth2AccessToken.cs" />
+    <Compile Include="Models\WechatPay\OAuth2Userinfo.cs" />
+    <Compile Include="Models\WechatPay\PayNotifyRequest.cs" />
+    <Compile Include="Models\WechatPay\PayNotifyResponse.cs" />
+    <Compile Include="Models\WechatPay\RedpackRequest.cs" />
+    <Compile Include="Models\WechatPay\RedpackResponse.cs" />
+    <Compile Include="Models\CommonModels.cs" />
+    <Compile Include="Models\TokenForSpeech.cs" />
+    <Compile Include="Models\WechatPay\TransferRequest.cs" />
+    <Compile Include="Models\WechatPay\TransferResponse.cs" />
+    <Compile Include="Models\WechatPay\UnifiedOrderRequest.cs" />
+    <Compile Include="Models\WechatPay\UnifiedOrderResponse.cs" />
+    <Compile Include="Models\WechatProgram\EncryptedDataMolde.cs" />
+    <Compile Include="Models\WechatProgram\Jscode2SessionResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\System.Extensions\System.Extensions.csproj">
+      <Project>{79ee4385-5620-47f4-bbfc-8adfcaa3b5ac}</Project>
+      <Name>System.Extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
