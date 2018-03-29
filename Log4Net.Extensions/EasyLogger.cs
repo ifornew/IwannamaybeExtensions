@@ -49,7 +49,7 @@ namespace Log4Net.Extensions
             LogicalThreadContext.Properties["userAgent"] = HttpContext.Current.Request.UserAgent;
             LogicalThreadContext.Properties["header"] = HttpContext.Current.Request.Headers.ToString();
             LogicalThreadContext.Properties["refer"] = HttpContext.Current.Request.UrlReferrer;
-            LogicalThreadContext.Properties["createAt"] = endAt.AddSeconds(-1 * spendTime.TotalSeconds);
+            LogicalThreadContext.Properties["createdAt"] = endAt.AddSeconds(-1 * spendTime.TotalSeconds);
             LogicalThreadContext.Properties["spendTime"] = spendTime.TotalSeconds;
             try
             {
@@ -79,7 +79,7 @@ namespace Log4Net.Extensions
         /// <param name="spendTime">执行耗时</param>
         public static void LogSql(string sql, List<SqlParameter> dbParameters, DateTime endAt, TimeSpan spendTime)
         {
-            LogicalThreadContext.Properties["createAt"] = endAt.AddSeconds(-1 * spendTime.TotalSeconds);
+            LogicalThreadContext.Properties["createdAt"] = endAt.AddSeconds(-1 * spendTime.TotalSeconds);
             LogicalThreadContext.Properties["spendTime"] = spendTime.TotalSeconds;
             LogicalThreadContext.Properties["sql"] = sql;
             LogicalThreadContext.Properties["dbParameters"] = dbParameters.ToJson();
@@ -96,7 +96,7 @@ namespace Log4Net.Extensions
         /// <param name="exception">异常信息</param>
         public static void LogSql(string sql, List<SqlParameter> dbParameters, DateTime endAt, TimeSpan spendTime, Exception exception)
         {
-            LogicalThreadContext.Properties["createAt"] = endAt.AddSeconds(-1 * spendTime.TotalSeconds);
+            LogicalThreadContext.Properties["createdAt"] = endAt.AddSeconds(-1 * spendTime.TotalSeconds);
             LogicalThreadContext.Properties["spendTime"] = spendTime.TotalSeconds;
             LogicalThreadContext.Properties["sql"] = sql;
             LogicalThreadContext.Properties["dbParameters"] = dbParameters.ToJson();
