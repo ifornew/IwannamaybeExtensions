@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -225,6 +226,31 @@ namespace System.Extensions
                     streamWriter.Write(input);
                 }
             }
+        }
+        #endregion
+
+        #region enum
+        /// <summary>
+        /// 获取枚举的备注信息
+        /// </summary>
+        /// <param name="input">枚举</param>
+        /// <returns></returns>
+        public static string ToDescription(this Enum input)
+        {
+            foreach (MemberInfo memberInfo in input.GetType().GetMembers())
+            {
+                if (memberInfo.Name == input.GetType().GetEnumName(input))
+                {
+                    foreach (Attribute attribute in Attribute.GetCustomAttributes(memberInfo))
+                    {
+                        if (attribute.GetType() == typeof(DescriptionAttribute))
+                        {
+                            return ((DescriptionAttribute)attribute).Description;
+                        }
+                    }
+                }
+            }
+            return string.Empty;
         }
         #endregion
 
