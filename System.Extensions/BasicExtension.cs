@@ -250,7 +250,7 @@ namespace System.Extensions
                     }
                 }
             }
-            return string.Empty;
+            return null;
         }
         #endregion
 
