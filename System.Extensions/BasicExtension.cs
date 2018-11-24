@@ -258,7 +258,7 @@ namespace System.Extensions
                 return default(T);
             }
             object value = input.GetType().GetProperties().FirstOrDefault(d => d.Name == propertyName).GetValue(input, null);
-            return value == null ? (T)value : default(T);
+            return value != null ? (T)value : default(T);
         }
         #endregion
 
