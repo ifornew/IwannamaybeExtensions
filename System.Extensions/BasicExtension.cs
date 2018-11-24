@@ -242,7 +242,12 @@ namespace System.Extensions
             {
                 return null;
             }
-            return input.GetType().GetProperties().FirstOrDefault(d => d.Name == propertyName).GetValue(input, null);
+            PropertyInfo propertyInfo = input.GetType().GetProperties().FirstOrDefault(d => d.Name == propertyName);
+            if (propertyInfo == null)
+            {
+                return null;
+            }
+            return propertyInfo.GetValue(input, null);
         }
 
         /// <summary>
@@ -257,8 +262,17 @@ namespace System.Extensions
             {
                 return default(T);
             }
-            object value = input.GetType().GetProperties().FirstOrDefault(d => d.Name == propertyName).GetValue(input, null);
-            return value != null ? (T)value : default(T);
+            PropertyInfo propertyInfo = input.GetType().GetProperties().FirstOrDefault(d => d.Name == propertyName);
+            if (propertyInfo == null)
+            {
+                return default(T);
+            }
+            object value = propertyInfo.GetValue(input, null);
+            if (value == null)
+            {
+                return default(T);
+            }
+            return (T)value;
         }
         #endregion
 
