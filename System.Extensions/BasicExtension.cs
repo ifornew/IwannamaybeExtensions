@@ -229,6 +229,39 @@ namespace System.Extensions
         }
         #endregion
 
+        #region object
+        /// <summary>
+        /// 获取一个对象指定的属性值
+        /// </summary>
+        /// <param name="input">object 对象</param>
+        /// <param name="propertyName">属性名称</param>
+        /// <returns></returns>
+        public static object GetValue(this object input, string propertyName)
+        {
+            if (input == null)
+            {
+                return null;
+            }
+            return input.GetType().GetProperties().FirstOrDefault(d => d.Name == propertyName).GetValue(input, null);
+        }
+
+        /// <summary>
+        /// 获取一个对象指定的属性值
+        /// </summary>
+        /// <param name="input">object 对象</param>
+        /// <param name="propertyName">属性名称</param>
+        /// <returns></returns>
+        public static T GetValue<T>(this object input, string propertyName)
+        {
+            if (input == null)
+            {
+                return default(T);
+            }
+            object value = input.GetType().GetProperties().FirstOrDefault(d => d.Name == propertyName).GetValue(input, null);
+            return value == null ? (T)value : default(T);
+        }
+        #endregion
+
         #region enum
         /// <summary>
         /// 获取枚举的备注信息
