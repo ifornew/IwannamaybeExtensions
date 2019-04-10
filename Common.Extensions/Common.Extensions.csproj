@@ -51,10 +51,12 @@
     <Compile Include="EasyBaiduSpeech.cs" />
     <Compile Include="EasyCaptcha.cs" />
     <Compile Include="EasyIp.cs" />
+    <Compile Include="EasyRSA.cs" />
     <Compile Include="EasySession.cs" />
     <Compile Include="EasyWechatPay.cs" />
     <Compile Include="EasyWechatProgram.cs" />
     <Compile Include="EasyWindowsSpeech.cs" />
+    <Compile Include="Extensions\RSAExtension.cs" />
     <Compile Include="Models\FileType.cs" />
     <Compile Include="Models\LocationForIp.cs" />
     <Compile Include="Models\WechatPay\Oauth2AccessToken.cs" />
@@ -73,7 +75,6 @@
     <Compile Include="Models\WechatProgram\Jscode2SessionResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\System.Extensions\System.Extensions.csproj">
       <Project>{79ee4385-5620-47f4-bbfc-8adfcaa3b5ac}</Project>
