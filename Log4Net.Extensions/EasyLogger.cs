@@ -38,6 +38,7 @@ namespace Log4Net.Extensions
         public static void LogRequest(TimeSpan spendTime, DateTime endAt)
         {
             string ip = HttpContext.Current.Request.UserHostAddress;
+            LogicalThreadContext.Properties["methodName"] = EasyCommon.GetRequestMethod();
             LogicalThreadContext.Properties["method"] = (int)EasyCommon.GetRequestMethod();
 
             LogicalThreadContext.Properties["ip"] = ip;
@@ -234,7 +235,7 @@ namespace Log4Net.Extensions
             LogicalThreadContext.Properties["values"] = values.ToJson();
             LogicalThreadContext.Properties["level"] = (int)LogLevel.警告;
             LogicalThreadContext.Properties["type"] = logType;
-            _logger.Warn(string.Format("{0}【原因】：{1}", message, exception.Message), exception);
+            _logger.Warn(message ?? exception.Message, exception);
         }
 
         /// <summary>
@@ -256,7 +257,7 @@ namespace Log4Net.Extensions
             LogicalThreadContext.Properties["values"] = values.ToJson();
             LogicalThreadContext.Properties["level"] = (int)LogLevel.错误;
             LogicalThreadContext.Properties["type"] = 0;
-            _logger.Fatal("未处理异常：" + exception.Message, exception);
+            _logger.Fatal(exception.Message, exception);
         }
 
         /// <summary>
