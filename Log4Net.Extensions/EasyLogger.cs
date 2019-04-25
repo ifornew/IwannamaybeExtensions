@@ -37,15 +37,10 @@ namespace Log4Net.Extensions
         /// </summary>
         public static void LogRequest(TimeSpan spendTime, DateTime endAt)
         {
-            string ip = HttpContext.Current.Request.UserHostAddress;
             LogicalThreadContext.Properties["methodName"] = EasyCommon.GetRequestMethod();
             LogicalThreadContext.Properties["method"] = (int)EasyCommon.GetRequestMethod();
 
-            LogicalThreadContext.Properties["ip"] = ip;
-            LocationForIp locationForIp = EasyIp.Find(ip);
-            LogicalThreadContext.Properties["country"] = locationForIp.Country;
-            LogicalThreadContext.Properties["province"] = locationForIp.Province;
-            LogicalThreadContext.Properties["city"] = locationForIp.City;
+            LogicalThreadContext.Properties["ip"] = HttpContext.Current.Request.UserHostAddress;
             LogicalThreadContext.Properties["uri"] = HttpContext.Current.Request.Url;
             LogicalThreadContext.Properties["userAgent"] = HttpContext.Current.Request.UserAgent;
             LogicalThreadContext.Properties["header"] = HttpContext.Current.Request.Headers.ToString();
